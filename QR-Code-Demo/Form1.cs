@@ -1,4 +1,5 @@
-﻿using QRCoder;
+﻿using Libraries;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +18,10 @@ namespace QR_Code_Demo
         {
             InitializeComponent();
 
+            
+
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode("The text which should be encoded.", QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(HardwareInfo.GenerateUID("luxData.small"), QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
 
